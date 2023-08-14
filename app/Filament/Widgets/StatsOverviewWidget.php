@@ -16,12 +16,20 @@ class StatsOverviewWidget extends BaseWidget
                 ->description('32k increase')
                 ->descriptionIcon('heroicon-s-trending-up')
                 ->chart([7, 2, 10, 3, 15, 4, 17])
-                ->color('success'),
+                ->color('success')->extraAttributes([
+                    'class' => 'cursor-pointer',
+                    'wire:click' => '$emitUp("setStatusFilter", "processed")',
+                ]),
             Card::make('New customers', '1340')
                 ->description('3% decrease')
                 ->descriptionIcon('heroicon-s-trending-down')
                 ->chart([17, 16, 14, 15, 14, 13, 12])
                 ->color('danger'),
+            Card::make('New orders', '3543')
+                ->description('7% increase')
+                ->descriptionIcon('heroicon-s-trending-up')
+                ->chart([15, 4, 10, 2, 12, 4, 12])
+                ->color('success'),
             Card::make('New orders', '3543')
                 ->description('7% increase')
                 ->descriptionIcon('heroicon-s-trending-up')

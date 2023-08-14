@@ -15,12 +15,17 @@ return new class() extends Migration
     {
         Schema::create('shop_customers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('photo')->nullable();
+            $table->string('family_name');
+            $table->string('first_name')->unique();
+            $table->string('unformatted_name')->nullable();
             $table->enum('gender', ['male', 'female']);
             $table->string('phone')->nullable();
-            $table->date('birthday')->nullable();
+            $table->string('fullname')->nullable();
+            $table->string('customer_title')->nullable();
+            $table->bigInteger('marital_status')->nullable();
+            $table->boolean('hit_y_n')->default(false);
+            $table->string('id_no')->nullable();
+            $table->string('id_type')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

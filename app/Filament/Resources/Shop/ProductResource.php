@@ -26,7 +26,7 @@ class ProductResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static ?string $navigationGroup = 'Shop';
+    // protected static ?string $navigationGroup = 'Shop';
 
     protected static ?string $navigationIcon = 'heroicon-o-lightning-bolt';
 
@@ -86,31 +86,31 @@ class ProductResource extends Resource
                                     ->required(),
                             ])
                             ->columns(2),
-                        Forms\Components\Section::make('Inventory')
-                            ->schema([
-                                Forms\Components\TextInput::make('sku')
-                                    ->label('SKU (Stock Keeping Unit)')
-                                    ->unique(Product::class, 'sku', ignoreRecord: true)
-                                    ->required(),
+                        // Forms\Components\Section::make('Inventory')
+                        //     ->schema([
+                        //         Forms\Components\TextInput::make('sku')
+                        //             ->label('SKU (Stock Keeping Unit)')
+                        //             ->unique(Product::class, 'sku', ignoreRecord: true)
+                        //             ->required(),
 
-                                Forms\Components\TextInput::make('barcode')
-                                    ->label('Barcode (ISBN, UPC, GTIN, etc.)')
-                                    ->unique(Product::class, 'barcode', ignoreRecord: true)
-                                    ->required(),
+                        //         Forms\Components\TextInput::make('barcode')
+                        //             ->label('Barcode (ISBN, UPC, GTIN, etc.)')
+                        //             ->unique(Product::class, 'barcode', ignoreRecord: true)
+                        //             ->required(),
 
-                                Forms\Components\TextInput::make('qty')
-                                    ->label('Quantity')
-                                    ->numeric()
-                                    ->rules(['integer', 'min:0'])
-                                    ->required(),
+                        //         Forms\Components\TextInput::make('qty')
+                        //             ->label('Quantity')
+                        //             ->numeric()
+                        //             ->rules(['integer', 'min:0'])
+                        //             ->required(),
 
-                                Forms\Components\TextInput::make('security_stock')
-                                    ->helperText('The safety stock is the limit stock for your products which alerts you if the product stock will soon be out of stock.')
-                                    ->numeric()
-                                    ->rules(['integer', 'min:0'])
-                                    ->required(),
-                            ])
-                            ->columns(2),
+                        //         Forms\Components\TextInput::make('security_stock')
+                        //             ->helperText('The safety stock is the limit stock for your products which alerts you if the product stock will soon be out of stock.')
+                        //             ->numeric()
+                        //             ->rules(['integer', 'min:0'])
+                        //             ->required(),
+                        //     ])
+                        //     ->columns(2),
 
                         Forms\Components\Section::make('Shipping')
                             ->schema([
@@ -146,7 +146,12 @@ class ProductResource extends Resource
                                     ->searchable()
                                     ->hiddenOn(ProductsRelationManager::class),
 
-                                Forms\Components\MultiSelect::make('categories')
+                                // Forms\Components\MultiSelect::make('categories')
+                                //     ->relationship('categories', 'name')
+                                //     ->required(),
+
+                                Forms\Components\Select::make('categories')
+                                    ->multiple()
                                     ->relationship('categories', 'name')
                                     ->required(),
                             ]),

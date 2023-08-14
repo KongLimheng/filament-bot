@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Shop;
+namespace App\Filament;
 
 use App\Filament\Resources\Shop\CustomerResource\Pages;
 use App\Filament\Resources\Shop\CustomerResource\RelationManagers;
@@ -23,11 +23,11 @@ class CustomerResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static ?string $navigationGroup = 'Shop';
+    // protected static ?string $navigationGroup = 'Shop';
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
-    protected static ?int $navigationSort = 1;
+    // protected static ?int $navigationSort = 0;
 
     public static function form(Form $form): Form
     {
